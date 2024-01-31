@@ -12,12 +12,11 @@ def predict(image):
     img = PILImage.create(image)
     pred_class, pred_idx, outputs = model.predict(img)
     likelihood_is_pizza = outputs[1].item()
-    if likelihood_is_pizza == 1:
+    if likelihood_is_pizza == 0.9:
         return "Pizza"
-    elif likelihood_is_not_pizza < 0.01:
-        return "Not Pizza"
     else:
-        return "Not sure... try another picture!"
+        return "Not Pizza"
+
 st.title("Pizza vs. Not-Pizza Classifier")
 st.write("Upload an image, and I'll tell you whether it's pizza or not-pizza.")
 
